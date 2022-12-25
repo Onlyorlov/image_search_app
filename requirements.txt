@@ -7,3 +7,7 @@ pillow
 opencv-python
 torch
 torchvision
+fastapi
+pydantic
+uvicorn
+python-multipart
