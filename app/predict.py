@@ -11,6 +11,11 @@ index = HNSWIndex(settings.num_items, settings.emb_dim)
 index.load(settings.path_to_index, settings.path_to_fnms)
 
 def get_candidates(image_bytes:bytes, k=10):
+    '''
+    Args:
+        image_bytes (bytes): Query image in bytes
+        k (int): Number of nearest neighbours for search
+    '''
     embedding = emb_model.get_embedding(image_bytes)
     closest = index.query(embedding, k)
     return closest
