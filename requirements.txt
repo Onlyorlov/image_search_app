@@ -1,14 +1,9 @@
 tqdm
-os
-zipfile
 argparse
 pathlib
 hnswlib
 numpy
-io
-PIL
-os
-cv2
-pickle
+pillow
+opencv-python
 torch
 torchvision

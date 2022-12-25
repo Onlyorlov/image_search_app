@@ -21,7 +21,7 @@ FILE = Path(__file__).resolve()
 ROOT = FILE.parents[0]  # projects root directory
 
 
-def create_index(path_to_data:str, path_to_model:str, dir_to_save_index:str, dim:int):
+def create_index(path_to_data:str, path_to_model:str, dir_to_save_index:str):
     path_to_index = os.path.join(dir_to_save_index, 'index.in')
     path_to_fnms = os.path.join(dir_to_save_index, 'fnms.pkl')
 
@@ -45,8 +45,9 @@ def create_index(path_to_data:str, path_to_model:str, dir_to_save_index:str, dim
     for batch in tqdm(loader):
         embeddings = emb_model.get_batched_embeddings(batch)
         result_embeddings.append(embeddings)
-    result_embeddings = np.vstack(result_embeddings).reshape((-1, dim))
-    num_embeddings = result_embeddings.shape[0]
+    result_embeddings = np.vstack(result_embeddings).reshape((len(fnms), -1))
+    num_embeddings = len(fnms)
+    dim = result_embeddings.shape[1]
     print(f'Num embeddings: {num_embeddings}, shape: {dim}.')
 
     # create index
@@ -59,13 +60,12 @@ def parse_opt(known=False):
     parser.add_argument('--path_to_data', type=str, default=ROOT / 'data', help='Directory with images')
     parser.add_argument('--path_to_model', type=str, default=ROOT / 'resources/model.pth', help='Path to saved model')
     parser.add_argument('--path_to_index', type=str, default=ROOT / 'resources', help='Directory to save index')
-    parser.add_argument('--dim', type=int, default=2048, help='Embeddings dim')
 
     return parser.parse_args()
 
 def main(opt):
     print(f'Extracting embeddings and creating index')
-    create_index(opt.path_to_data, opt.path_to_model, opt.path_to_index, opt.dim)
+    create_index(opt.path_to_data, opt.path_to_model, opt.path_to_index)
     print(f'Index saved to {opt.path_to_index}')
 
 if __name__ == "__main__":
