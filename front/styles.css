@@ -1,0 +1,30 @@
+/* styles.css */
+.result {
+  display: inline-block;
+  margin: 10px;
+}
+
+.result-image {
+  width: 150px;
+}
+
+#search-results {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-gap: 20px;
+  }
+  
+  .result {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  }
+  
+  .result-image {
+  width: 100%;
+  }
+  
+  .result-metadata {
+  text-align: center;
+  font-size: 0.8em;
+  }

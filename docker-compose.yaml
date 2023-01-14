@@ -1,0 +1,18 @@
+version: '3'
+
+services:
+  backend:
+    # container_name: Back
+    image: image-search
+    ports:
+      - '8080:80'
+    volumes:
+      - ./data:/app/data
+  
+  frontend:
+    # container_name: Front
+    image: image-search-front
+    ports:
+      - '8000:8000'
+    environment:
+      - APP_PORT = 8000

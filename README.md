@@ -8,14 +8,29 @@
 
 ### 1.a Or you can download prepared files for test part of the Products-10k Dataset
 
-You need to put files inside of this [zip archive](https://drive.google.com/file/d/15Y9IkanJFk3hombQu3HgPmrKKxDfAt4l/view?usp=sharing) in `resources/` folder.
+You need to put files inside of this [zip archive](https://drive.google.com/file/d/15Y9IkanJFk3hombQu3HgPmrKKxDfAt4l/view?usp=sharing) in `resources/`, download [images](https://products-10k.github.io) and extract them to `data/`.
 
-You can download images [here](https://products-10k.github.io)(but we don't use them for now).
-
-## 2. Create Docker container
+## 2. Create Docker containers
 
 ```bash
-docker build -t image-search .
+docker build -f backend.dockerfile -t image-search .
 
-docker run -p 80:80 image-search
+# docker run -it \
+#     -p 8080:80 \
+#     -v $(pwd)/data:/app/data \
+#     image-search
+```
+
+```bash
+docker build -f frontend.dockerfile -t image-search-front . 
+
+# docker run -it \
+#     -p 8000:8000 \
+#     image-search-front
+```
+
+## 3. Run docker-compose
+
+```bash
+docker-compose up
 ```

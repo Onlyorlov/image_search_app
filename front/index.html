@@ -1,0 +1,30 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Image Search</title>
+  <!-- include your CSS styles here -->
+  <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+  <h1>Image Search</h1>
+  <!-- display a form for uploading an image -->
+  <form id="upload-form" enctype="multipart/form-data">
+    <label for="image-upload">Choose an image:</label>
+    <input type="file" id="image-upload" accept="image/*">
+    <button type="submit">Search</button>
+  </form>
+<!-- display the search results -->
+<div id="search-results"></div>
+<template id="result-template">
+    <div class="result">
+      <img class="result-image" src="">
+      <div class="result-metadata">
+        <!-- other metadata properties -->
+      </div>
+    </div>
+</template>
+  <!-- include your JavaScript file here -->
+  <script src="script.js"></script>
+</body>
+</html>
