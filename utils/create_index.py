@@ -1,10 +1,3 @@
-# create_index.py
-'''
-params:
-    path-to-model
-    path-to-archive
-    dir-to-save-index
-'''
 import os
 import argparse
 import numpy as np

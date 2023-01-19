@@ -34,3 +34,12 @@ docker build -f frontend.dockerfile -t image-search-front .
 ```bash
 docker-compose up
 ```
+
+<!-- ROADMAP -->
+## Roadmap
+
+* [x] Move preprocess scripts
+
+* [ ] Fix imports and test
+
+* [ ] Update postgres branch
